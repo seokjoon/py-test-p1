@@ -1,4 +1,4 @@
-with open('ds/array.py', 'r') as foos:
+with open('ds/arrayTmp.py', 'r') as foos:
     print(foos.read())
     # print(foos.readlines())
     # for foo in foos:
