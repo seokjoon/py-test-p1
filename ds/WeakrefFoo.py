@@ -34,7 +34,6 @@ print(bar)
 print()
 
 
-
 foo = WeakrefFoo
 foo_id = id(foo)
 bar = weakref.finalize(foo, on_finalize, foo)
@@ -45,3 +44,22 @@ print(bar)
 for o in gc.get_objects():
     if id(o) == foo_id:
         print('found uncollected object in gc')
+print()
+
+
+class WeakrefBar:
+    def __init__(self, name):
+        self.name = name
+
+    def __del__(self):
+        print(self)
+
+
+foo = WeakrefBar('FOO')
+bar = weakref.proxy(foo)
+print(foo.name)
+print(bar.name)
+del foo
+print(bar.name)
+
+
